@@ -2,10 +2,8 @@
 	<?php echo form_open("student/my_account_schedule");?>
 		<label>Year:</label>
 		<select name='year'>
-			<option value='2012'>2012-2013</option>
 			<option value='2013'>2013-2014</option>
 			<option value='2014'>2014-2015</option>
-			<option value='2015'>2015-2016</option>
 		</select>
 		<label>Term:</label>
 		<select name='term'>
