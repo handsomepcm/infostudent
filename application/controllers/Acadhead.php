@@ -58,13 +58,15 @@ class Acadhead extends CI_Controller {
 			$data['sy']=$row['sy'];
 			$data['years']=$row['years'];
 	    }
-		$data['result'] = $this->acadheaddb->data_all_course($id);
-		$data['all_subjects']=$this->acadheaddb->data_all_subjects();
+		//$data['result'] = $this->acadheaddb->data_all_course($id);
+		//$data['all_subjects']=$this->acadheaddb->data_all_subjects();
+		$data['curriculum_data']=$this->acadheaddb->data_curriculum($id);
 		$data['id'] = $id;
 
 		$this->load->view('header_view');
 		$this->load->view('acadhead/menu_view',$data);
-		$this->load->view('acadhead/manage_course_curriculum_view');
+		//$this->load->view('acadhead/manage_course_curriculum_view');
+		$this->load->view('acadhead/new_curriculum_view',$data);
 		$this->load->view('footer_view',$data);
 	}
 
