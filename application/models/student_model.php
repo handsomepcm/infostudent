@@ -578,6 +578,12 @@ class Student_model extends CI_Model {
 	 	$query = $this->db->get_where('curriculum',array('curi_id'=>$curi_id));
 		return $query -> result_array();
 	 }
+
+	function data_curriculum($id)
+	{
+		$query = $this->db->get_where("newcourse",array("curi_id"=>$id));
+		return $query->result();
+	}
 }
 
 /* End of file student_model.php */

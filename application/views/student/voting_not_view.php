@@ -1,2 +1,3 @@
 <?php defined('BASEPATH') OR exit('No direct script access allowed'); ?>
-<h4>Pleas wait for voting....</h4>
+<h3>Pleas wait for voting time....</h3>
+<p>The Student Comelec will announce the start of the election.</p>
