@@ -1,0 +1,10 @@
+course_id,course_name,course_year,course_term,course_prereq,course_coreq,course_unit_lec,course_unit_lec
+ENG111,Fundamentals of Grammar,1,1,,,3,0
+FIL111,Sining ng Komunikasyon  1,1,1,,,3,0
+IT111,Computer and Information Processing,1,1,,IT114,3,0
+IT112,Program Logic Formulation,1,1,,,3,0
+IT113,Mathematics for Computing,1,1,,,3,0
+IT114,Computer Applications ,1,1,,IT111,0,3
+GE 111,General Psychology,1,1,,,3,0
+PE1,Physical Fitness & Gymnastics,1,1,,,3,0
+NSTP1,National Service Training Program 1,1,1,,,3,0
