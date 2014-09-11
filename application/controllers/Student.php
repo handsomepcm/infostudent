@@ -22,7 +22,7 @@ class Student extends CI_Controller {
 		$this->load->view('student/header_view');
 		$this->load->view('student/nav_view',$data);
 		$this->load->view('student/home_sidebar_view',$data);
-		$this->load->view('student/main_view');
+		$this->load->view('student/main_view',$data);
 		$this->load->view('student/footer_view',$data);
 	}
 
@@ -263,16 +263,19 @@ class Student extends CI_Controller {
 		$names=$this->studentdb->course_name_sy();
 		foreach ($names as $row) 
 		{
+			$id = $row['curi_id'];
 			$data['course']=$row['name'];
 			$data['sy']=$row['sy'];
 			$data['years']=$row['years'];
 		}
-		$data['result']=$this->studentdb->data_all_course_sy();
+		//$data['result']=$this->studentdb->data_all_course_sy();
+		$data['result']=$this->studentdb->data_curriculum($id);
 		$data['grades']=$this->studentdb->grade_details();
 		$this->load->view('student/header_view');
 		$this->load->view('student/nav_view',$data);
 		$this->load->view('student/account_sidebar_view',$data);
-		$this->load->view('student/curriculum_view',$data);
+		//$this->load->view('student/curriculum_view',$data);
+		$this->load->view('student/new_curriculum_view',$data);
 		$this->load->view('student/footer_view',$data);
 	}
 }

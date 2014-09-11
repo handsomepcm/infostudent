@@ -27,6 +27,7 @@ class Acadhead_model extends CI_Model {
         echo $this->datatables->generate();
     }
 
+    //not used
     function get_all_course()
     {
         $this->datatables
@@ -41,6 +42,12 @@ class Acadhead_model extends CI_Model {
         $query = $this->db->get('course');
         return $query->result();
      }
+
+    function data_curriculum($id)
+    {
+        $query = $this->db->get_where("newcourse",array("curi_id"=>$id));
+        return $query->result();
+    }
 
     function get_news_content($id)
     {
@@ -90,8 +97,8 @@ class Acadhead_model extends CI_Model {
         $config['protocol'] = "smtp";
         $config['smtp_host'] = "ssl://smtp.gmail.com";
         $config['smtp_port'] = "465";
-        $config['smtp_user'] = "handsomepcm@gmail.com"; 
-        $config['smtp_pass'] = "master-4577";
+        $config['smtp_user'] = "dummypcm@gmail.com"; 
+        $config['smtp_pass'] = "handsomepcmaster";
         $config['charset'] = "utf-8";
         $config['mailtype'] = "html";
         $config['newline'] = "\r\n";
@@ -225,6 +232,7 @@ class Acadhead_model extends CI_Model {
         $this->db->update('course',$data);
     }
 
+    //not used
     function add_course(){
         $data = array(
         'course_id' => $this->input->post('course_id'), 
@@ -237,6 +245,7 @@ class Acadhead_model extends CI_Model {
         $this->db->insert('course',$data);
     }
 
+    //not used
     function data_all_course($id)
     {
         $query = $this->db->query("SELECT sub.*,combi.term,combi.year
@@ -281,12 +290,11 @@ class Acadhead_model extends CI_Model {
                 if($row>1){
                     for ($c=0; $c < $num; $c++) {
                         $storage[$c]=$data[$c];
-                    
                     }
-
+                    
                     $query="INSERT IGNORE INTO 
-                            curriculum_courses (curi_id,course_id,year,term) 
-                            VALUES ($id,'$storage[0]','$storage[1]','$storage[2]')";
+                            newcourse (curi_id,course_id,year,term,course_name,pre_req,co_req,lec_unit,lab_unit) 
+                            VALUES ($id,'$storage[0]','$storage[1]','$storage[2]','$storage[3]','$storage[4]','$storage[5]','$storage[6]','$storage[7]')";
                     $this->db->query($query);  
                     
                 }
