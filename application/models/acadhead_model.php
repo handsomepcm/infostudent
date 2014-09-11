@@ -8,6 +8,20 @@ class Acadhead_model extends CI_Model {
 
     }
 
+    function log($action)
+    {
+        $session_data = $this->session->userdata('logged_in');
+        $this->load->helper('date');
+        $format = 'DATE_RFC850';
+        $time = time();
+        $log = array(
+              'user_id' => $session_data['user_id'],
+              'action' => $action,
+              'time' => standard_date($format, $time)
+              );
+        $this->db->insert('logs',$log);
+    }
+
     function get_all_news()
     {
         $this->datatables
@@ -121,7 +135,10 @@ class Acadhead_model extends CI_Model {
         if (!$result)
         {
             echo $this->email->print_debugger();
-        }  
+        }
+
+        $this->log("Add News");
+
     }
 
     function entry_update_news()
@@ -139,6 +156,8 @@ class Acadhead_model extends CI_Model {
 
         $this->db->where('news_id',$this->input->post('news_id'));
         $this->db->update('news',$data);
+
+        $this->log("Update News");
     }
 
     function edit_curriculum_name()
@@ -148,6 +167,8 @@ class Acadhead_model extends CI_Model {
             );
         $this->db->where('curi_id',$this->input->post('id'));
         $this->db->update('curriculum',$data);
+
+        $this->log("Edit Curriculum Name");
     }
 
     function edit_curriculum_description()
@@ -157,6 +178,8 @@ class Acadhead_model extends CI_Model {
             );
         $this->db->where('curi_id',$this->input->post('id'));
         $this->db->update('curriculum',$data);
+
+        $this->log("Edit Description");
     }
 
     function edit_curriculum_years()
@@ -166,6 +189,8 @@ class Acadhead_model extends CI_Model {
             );
         $this->db->where('curi_id',$this->input->post('id'));
         $this->db->update('curriculum',$data);
+
+        $this->log("Edit Years");
     }
 
     function edit_curriculum_sy()
@@ -175,6 +200,8 @@ class Acadhead_model extends CI_Model {
             );
         $this->db->where('curi_id',$this->input->post('id'));
         $this->db->update('curriculum',$data);
+
+        $this->log("Edit School Year");
     }
 
     function add_curriculum(){
@@ -185,6 +212,8 @@ class Acadhead_model extends CI_Model {
         'sy' =>  $this->input->post('school_year')
         );
         $this->db->insert('curriculum',$data);
+
+        $this->log("Add Curriculum");
     }
 
     function edit_course_name()

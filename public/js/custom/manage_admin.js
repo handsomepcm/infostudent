@@ -47,6 +47,7 @@
                         else
                         {
                             alert("Success!"); 
+                            oTable.fnReloadAjax();
                         }
                     }
                 },
@@ -72,6 +73,7 @@
                         else
                         {
                             alert("Success!"); 
+                            oTable.fnReloadAjax();
                         }
                     }
                 },
@@ -97,6 +99,7 @@
                         else
                         {
                             alert("Success!"); 
+                            oTable.fnReloadAjax();
                         }
                     }
                 },null,
@@ -158,6 +161,7 @@
                         else
                         {
                             alert("Success!"); 
+                            oTable.fnReloadAjax();
                         }
                     }
                 },
@@ -185,6 +189,7 @@
                         else
                         {
                             alert("Success!"); 
+                            oTable.fnReloadAjax();
                         }
                     }
                 },

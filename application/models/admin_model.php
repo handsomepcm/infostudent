@@ -7,6 +7,20 @@ class Admin_model extends CI_Model {
         parent::__construct();
     }
 
+    function log($action)
+    {
+        $session_data = $this->session->userdata('logged_in');
+        $this->load->helper('date');
+        $format = 'DATE_RFC850';
+        $time = time();
+        $log = array(
+              'user_id' => $session_data['user_id'],
+              'action' => $action,
+              'time' => standard_date($format, $time)
+              );
+        $this->db->insert('logs',$log);
+    }
+
     function retrieve_all_data()
     {
         $this->datatables
@@ -31,6 +45,7 @@ class Admin_model extends CI_Model {
             );
         $this->db->where('id',$this->input->post('id'));
         $this->db->update('users',$data);
+        $this->log("Edit User ID");
     }
 
     function edit_last_name()
@@ -40,6 +55,7 @@ class Admin_model extends CI_Model {
             );
         $this->db->where('id',$this->input->post('id'));
         $this->db->update('users',$data);
+        $this->log("Edit Last Name");
     }
 
     function edit_first_name()
@@ -49,6 +65,7 @@ class Admin_model extends CI_Model {
             );
         $this->db->where('id',$this->input->post('id'));
         $this->db->update('users',$data);
+        $this->log("Edit First Name");
     }
 
     function edit_privilege()
@@ -58,6 +75,7 @@ class Admin_model extends CI_Model {
             );
         $this->db->where('id',$this->input->post('id'));
         $this->db->update('users',$data);
+        $this->log("Edit Privilege");
     }
 
     function edit_email()
@@ -67,6 +85,7 @@ class Admin_model extends CI_Model {
             );
         $this->db->where('id',$this->input->post('id'));
         $this->db->update('users',$data);
+        $this->log("Edit Email");
     }
 
     function edit_activation()
@@ -76,12 +95,14 @@ class Admin_model extends CI_Model {
             );
         $this->db->where('id',$this->input->post('id'));
         $this->db->update('users',$data);
+        $this->log("Edit Activation");
     }
 
     function reset_password()
     {
         $this->db->where('id',$this->input->post('id'));
         $this->db->update('users',array('password'=>'c21f969b5f03d33d43e04f8f136e7682')); 
+        $this->log("Reset Password");
     }
 
     function check_user()
@@ -114,6 +135,7 @@ class Admin_model extends CI_Model {
         'status' => 'activated' 
         );
         $this->db->insert('users',$data);
+        $this->log("Add New User");
     }
 
     function save_csv($dir){

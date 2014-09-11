@@ -8,6 +8,20 @@ class Services_model extends CI_Model {
 
     }
 
+    function log($action)
+    {
+        $session_data = $this->session->userdata('logged_in');
+        $this->load->helper('date');
+        $format = 'DATE_RFC850';
+        $time = time();
+        $log = array(
+              'user_id' => $session_data['user_id'],
+              'action' => $action,
+              'time' => standard_date($format, $time)
+              );
+        $this->db->insert('logs',$log);
+    }
+
     function check_expiry()
     {
     	$query = $this->db->get_where('feedback',array('feedback_status'=>'activated'));
@@ -92,11 +106,15 @@ class Services_model extends CI_Model {
 			);
 		
 		$this->db->update('feedback',$data);
+
+		$this->log("Force End Feedback");
 	}
 
 	function remove_instrument($int)
 	{
 		$this->db->delete('feedback_output', array('index_name' => $int)); 
+
+		$this->log("Remove Instrument");
 	}
 	function entry_insert_instrument()
 	{
@@ -123,6 +141,8 @@ class Services_model extends CI_Model {
 		}
 		$query="ALTER TABLE feedback_record ADD $index $type";
 		$this->db->query($query); 
+
+		$this->log("Add Instrument");
 	}
 
 	function entry_update_instrument()
@@ -134,6 +154,8 @@ class Services_model extends CI_Model {
 				);
 		$this->db->where('index_name',$this->input->post('index_name'));
 		$this->db->update('feedback_output',$data);
+
+		$this->log("Update Instrument");
 
 	}
 
