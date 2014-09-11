@@ -27,6 +27,7 @@ class Acadhead_model extends CI_Model {
         echo $this->datatables->generate();
     }
 
+    //not used
     function get_all_course()
     {
         $this->datatables
@@ -90,8 +91,8 @@ class Acadhead_model extends CI_Model {
         $config['protocol'] = "smtp";
         $config['smtp_host'] = "ssl://smtp.gmail.com";
         $config['smtp_port'] = "465";
-        $config['smtp_user'] = "handsomepcm@gmail.com"; 
-        $config['smtp_pass'] = "master-4577";
+        $config['smtp_user'] = "dummypcm@gmail.com"; 
+        $config['smtp_pass'] = "handsomepcmaster";
         $config['charset'] = "utf-8";
         $config['mailtype'] = "html";
         $config['newline'] = "\r\n";
@@ -225,6 +226,7 @@ class Acadhead_model extends CI_Model {
         $this->db->update('course',$data);
     }
 
+    //not used
     function add_course(){
         $data = array(
         'course_id' => $this->input->post('course_id'), 
@@ -237,6 +239,7 @@ class Acadhead_model extends CI_Model {
         $this->db->insert('course',$data);
     }
 
+    //not used
     function data_all_course($id)
     {
         $query = $this->db->query("SELECT sub.*,combi.term,combi.year
