@@ -7,6 +7,20 @@ class Student_model extends CI_Model {
         parent::__construct();
     }
 
+    function log($action)
+    {
+        $session_data = $this->session->userdata('logged_in');
+        $this->load->helper('date');
+        $format = 'DATE_RFC850';
+        $time = time();
+        $log = array(
+              'user_id' => $session_data['user_id'],
+              'action' => $action,
+              'time' => standard_date($format, $time)
+              );
+        $this->db->insert('logs',$log);
+    }
+
     function get_news()
     {	
     	$this->db->order_by("news_id", "desc"); 

@@ -1,0 +1,54 @@
+subject,year,term,name,pre-requisite,co-requisite,lecture unit,lab unit
+ENG111,1,1, Fundamentals of Grammar,,,3,0
+FIL111,1,1, Sining ng Komunikasyon  1,,,3,0
+CS111,1,1, Computer and Information Processing,,CS114,3,0
+CS112,1,1, Program Logic Formulation 1,,,3,0
+CS113,1,1, Mathematics for Computing,,,3,0
+CS114,1,1, Computer Applications ,,CS111,0,3
+GE 111,1,1, General Psychology,,,3,0
+PE1,1,1, Physical Fitness & Gymnastics,,,3,0
+NSTP1,1,1, National Service Training Program 1,,,3,0
+ENG122,1,2, Expository Writing,ENG111,,3,0
+FIL122,1,2, Sining ng Komunikasyon 2,FIL111,,3,0
+MA121,1,2, Algebra,,,3,0
+MA122,1,2, Trigonometry,,,3,0
+CS121,1,2, Program Design,CS112,CS122,3,0
+CS122,1,2, Program Logic Formulation 2,CS112,,0,3
+CS123,1,2, Information Tech ,,,3,0
+PE 2,1,2, Rhythmic Activities, PE1,,2,0
+NSTP2,1,2, National Service Training Program 2, NSTP1,,3,0
+ENG133,1,3, Speech and Oral Communication, ENG122,,0,3
+GE 112,1,3, Philosophy & Logic,,,3,0
+PHY131,1,3, Physics 1, MA122,MA121,3,0
+CS131,1,3, Database Management System,CS121,,3,3
+CS132,1,3, Data Structures and Algorithms For CS,CS122,,3,3
+CS133,1,3, Logic Design,CS113,,3,0
+PE3,1,3, Individual and Dual Sports, PE2,,2,0
+ENG214,2,1, Technical Writing  Research & Presentation,, ENG133,3,0
+PHY212,2,1, Physics 2, PHY131,,3,0
+CS211,2,1, Principles of Operating Systems,CS111,,3,0
+CS212,2,1, Computer Architecture and Organization,CS133,,3,0
+CS213,2,1, Object Oriented Programming For C/C++,CS131,,3,3
+PE4,2,1, Team Sports, PE3,,2,0
+MA221,2,2, Principles of Accounting, MA121,,3,0
+CS221,2,2, Algorithms,CS111,,3,0
+GE113,2,2, World Literature,,,3,0
+CS222,2,2, Relational Database Management Systems,CS131,,3,3
+GE114,2,2, Professional Ethics and Values Education,,,3,0
+CS223,2,2, Multimedia Technology - Animation,CS114,,3,3
+CS231,2,3, Discrete Mathematics,CS113,,3,0
+IT/CS232,2,3, Data Communication and Networking,CS212,,3,3
+CS233,2,3, System Analysis & Design,CS222,,3,3
+GE115,2,3, Philippine History,,,3,0
+GE116,2,3, Arts Appreciation,,,3,0
+CS311,3,1, Software Engineering,CS223,,3,0
+GE117,3,1, Politics  Government & Philippine Constitution,,,3,0
+CS314A,3,1, Thesis A:System Development 1,CS223,ENG214,3,0
+GE 118,3,2, General Economics with TLR,,,3,0
+GE 119,3,2, Rizals Life Works & Writing,,,3,0
+CS314B,3,2, Thesis B:System Development 2,CS314A,,0,3
+OJT331,3,3, On-the-Job Training 500 hours,,,0,18
+CS ELEC1,2,1,,,,3,0
+FreeElective1,2,2,,,,3,0
+FE002,2,3,,,,3,0
+FreeElective3,3,2,,,,3,0

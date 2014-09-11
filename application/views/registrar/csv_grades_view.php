@@ -1,5 +1,5 @@
 <div class="page-header">
-  <h1>Manage Enrollment <small><span class="glyphicon glyphicon-arrow-right"></span> Grades CSV</small></h1>
+  <h1>Manage Grades <small><span class="glyphicon glyphicon-arrow-right"></span> Grades CSV</small></h1>
 </div>
 <div class="row">
   <div class="col-md-6">

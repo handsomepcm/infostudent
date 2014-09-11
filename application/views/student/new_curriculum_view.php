@@ -95,12 +95,13 @@
 		 			<li>Earned:<?php echo $units;?></li>
 		 			<li>Required:
 		 				<?php 
-		 					if ($course=="BSIT"&&$sy=="2007-2008") {
+		 					$req = 170;
+		 					/*if ($course=="BSIT") {
 		 						$req=168;
 		 					}
 							if ($course=="BSBA"&&$sy=="2007-2008") {
 		 						$req=168;
-		 					}
+		 					}*/
 		 					echo $req;
 		 				?>
 		 			</li>

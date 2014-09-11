@@ -7,6 +7,20 @@ class Comelec_model extends CI_Model {
         parent::__construct();
     }
 
+    function log($action)
+    {
+        $session_data = $this->session->userdata('logged_in');
+        $this->load->helper('date');
+        $format = 'DATE_RFC850';
+        $time = time();
+        $log = array(
+              'user_id' => $session_data['user_id'],
+              'action' => $action,
+              'time' => standard_date($format, $time)
+              );
+        $this->db->insert('logs',$log);
+    }
+
     function check($table,$field,$data)
     {
         $query = $this->db->get_where($table,array($field=>$data));
@@ -117,6 +131,8 @@ class Comelec_model extends CI_Model {
             );
         $this->db->where('election_id',$this->input->post('id'));
         $this->db->update('election',$data);
+
+        $this->log("Edit Election Name");
     }
 
     function add_election()
@@ -141,6 +157,8 @@ class Comelec_model extends CI_Model {
 			'total_voters' =>  $this->db->count_all('student'),  
 			);
 		$this->db->insert('election',$data);
+
+		$this->log("Add Election");
 	}
 
 	function get_election_data()
@@ -170,6 +188,8 @@ class Comelec_model extends CI_Model {
 		}
 		$this->db->where('election_id',$id);
 		$this->db->update('election',$data);
+
+		$this->log("Edit Filing Time");
 	}
 
 	function filing_end()
@@ -183,6 +203,8 @@ class Comelec_model extends CI_Model {
 			);
 		$this->db->where('election_id',$id);
 		$this->db->update('election',$data);
+
+		$this->log("Force Filing End");
 	}
 
 	function voting_time()
@@ -197,6 +219,8 @@ class Comelec_model extends CI_Model {
 		}
 		$this->db->where('election_id',$id);
 		$this->db->update('election',$data);
+
+		$this->log("Edit Voting Time");
 	}
 
 	function voting_end()
@@ -210,6 +234,8 @@ class Comelec_model extends CI_Model {
 			);
 		$this->db->where('election_id',$id);
 		$this->db->update('election',$data);
+
+		$this->log("Force Voting End");
 	}
 
 	function get_voting_results($from_control)
@@ -353,6 +379,8 @@ class Comelec_model extends CI_Model {
 					);
 		$this->db->where($where);
 		$this->db->update('candidates',array('candidate_status'=>'disapproved'),"candidate_id != $id");
+
+		$this->log("Student Approve");
 	}
 
 	function status_disapprove($id)
@@ -371,7 +399,9 @@ class Comelec_model extends CI_Model {
 						'candidate_party'=>$par
 					);
 		$this->db->where('candidate_id',$id);
-		$this->db->update('candidates',array('candidate_status'=>'disapproved')); 
+		$this->db->update('candidates',array('candidate_status'=>'disapproved'));
+
+		$this->log("Student Disapprove"); 
 
 	}
 }

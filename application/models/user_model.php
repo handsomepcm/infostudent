@@ -7,6 +7,20 @@ class User_model extends CI_Model {
         parent::__construct();
     }
 
+    function log($action)
+    {
+        $session_data = $this->session->userdata('logged_in');
+        $this->load->helper('date');
+        $format = 'DATE_RFC850';
+        $time = time();
+        $log = array(
+              'user_id' => $session_data['user_id'],
+              'action' => $action,
+              'time' => standard_date($format, $time)
+              );
+        $this->db->insert('logs',$log);
+    }
+
     function check_user()
     {
         $this -> db -> select('*');
@@ -72,6 +86,8 @@ class User_model extends CI_Model {
         $this->db->where('id',$this->input->post('id'));
         $this->db->update('users',$data); 
 
+        $this->log("Password Update");
+
     }
 
     function password_compare($password,$id)
@@ -101,6 +117,8 @@ class User_model extends CI_Model {
             );
         $this->db->where('id',$this->input->post('id'));
         $this->db->update('users',$data);
+
+        $this->log("Email Update");
      }
 }
 

@@ -8,10 +8,10 @@
             //"sPaginationType": "bootstrap",
             "sServerMethod": "POST",
             "iDisplayLength": 5,
-            "sAjaxSource": APP_URL+"acadhead/get_all_curriculum_data" 
-            /*"aoColumnDefs": [
+            "sAjaxSource": APP_URL+"acadhead/get_all_curriculum_data", 
+            "aoColumnDefs": [
                 { "bSearchable": false, "bVisible": false, "aTargets": [ 0 ]}
-            ]*/      
+            ]      
         });
         $('#curriculum').dataTable().makeEditable({
             "aoColumns": [

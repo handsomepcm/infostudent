@@ -45,7 +45,7 @@
             <li <?php if(isset($csv_grades)){echo $csv_grades;} ?>>
             <a href="<?php echo base_url();?>registrar/csv_grades/1">Csv Grades</a></li>
             <li <?php if(isset($csv_credited)){echo $csv_credited;} ?>>
-            <a href="<?php echo base_url();?>registrar/csv_credited/1">Csv Credited Grades</a></li>
+            <a href="<?php echo base_url();?>registrar/csv_credited/1">Csv Credited Subjects</a></li>
           </ul>
         </li>
       </ul>
