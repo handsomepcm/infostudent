@@ -44,6 +44,7 @@ class Acadhead extends CI_Controller {
 		$this->load->view('footer_view',$data);
 	}
 
+	//not used
 	public function manage_course_curriculum($id)
 	{
 		$data = $this->check->privilege("acadhead");
@@ -57,16 +58,19 @@ class Acadhead extends CI_Controller {
 			$data['sy']=$row['sy'];
 			$data['years']=$row['years'];
 	    }
-		$data['result'] = $this->acadheaddb->data_all_course($id);
-		$data['all_subjects']=$this->acadheaddb->data_all_subjects();
+		//$data['result'] = $this->acadheaddb->data_all_course($id);
+		//$data['all_subjects']=$this->acadheaddb->data_all_subjects();
+		$data['curriculum_data']=$this->acadheaddb->data_curriculum($id);
 		$data['id'] = $id;
 
 		$this->load->view('header_view');
 		$this->load->view('acadhead/menu_view',$data);
-		$this->load->view('acadhead/manage_course_curriculum_view');
+		//$this->load->view('acadhead/manage_course_curriculum_view');
+		$this->load->view('acadhead/new_curriculum_view',$data);
 		$this->load->view('footer_view',$data);
 	}
 
+	//not used
 	public function manage_course()
 	{
 		$data = $this->check->privilege("acadhead");
@@ -158,6 +162,7 @@ class Acadhead extends CI_Controller {
 		$this->acadheaddb->get_all_curriculum();
 	}
 
+	//not used
 	public function get_all_course_data()
 	{
 		$this->acadheaddb->get_all_course();
@@ -445,6 +450,7 @@ class Acadhead extends CI_Controller {
 		}
 	}
 
+	//not used
 	public function add_course()
 	{
 		$data = $this->check->privilege("acadhead");
