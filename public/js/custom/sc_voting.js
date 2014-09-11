@@ -39,37 +39,69 @@ $(document).ready(function(){
             });
         }
     });
-});
-function votei()
-  {
-      var answer = confirm("Are you sure you want to send individual vote?")
-      if (answer){
-          document.messages.submit();
-      }
-      return false;  
-  }
-  function votep()
-  {
-      var answer = confirm("Are you sure you want to send party vote?")
-      if (answer){
-          document.messages.submit();
-      }
-      return false;  
-  }
-$(window).load(function(){
-    $('#submit').hide();
-    $(":radio").change(function() {
-        var names = {};
-        $(':radio').each(function() {
-            names[$(this).attr('name')] = true;
-        });
-        var count = 0;
-        $.each(names, function() { 
-            count++;
-        });
-        if ($(':radio:checked').length === count) {
-            alert("All Fields Filled");
-            $('#submit').show();
+
+    var form1 = $( "#vote_party" );
+    form1.validate({
+        rules: {
+            party: "required"
+        },
+        submitHandler: function(form) {
+          if (confirm("You are about to submit vote by party, are you sure?")) {
+            $.ajax({
+                url: APP_URL+"student/vote_party",
+                type: 'POST',
+                data: form1.serialize(),
+                success: function(msg) {
+                    if (msg!=1) {;
+                        alert("Not Saved "+msg);
+                    }
+                    else
+                    {
+                        alert("Votes Send");
+                        window.location.href = APP_URL+'student/sc_voting';
+                    }
+                }
+            });
+          }
         }
-    }).change();
+    });
+
+    var form2 = $( "#vote_individual" );
+    form2.validate({
+        rules: {
+            president: "required",
+            vpexternal: "required",
+            vpinternal: "required",
+            secretary: "required",
+            treasurer: "required",
+            auditor: "required",
+            pro: "required"
+        },
+        errorPlacement: function(error, element) {
+            if (element.attr("type") == "radio") {
+                error.insertBefore(element);
+            } else {
+                error.insertAfter(element);
+            }
+        },
+        submitHandler: function(form) {
+            if (confirm("You are about to submit votes, please recheck the the fields?")) {
+              $.ajax({
+                  url: APP_URL+"student/vote_individual",
+                  type: 'POST',
+                  data: form2.serialize(),
+                  success: function(msg) {
+                      if (msg!=1) {;
+                          alert("Not Saved "+msg);
+                      }
+                      else
+                      {
+                          alert("Votes Send");
+                          window.location.href = APP_URL+'student/sc_voting';
+                      }
+                  }
+              });
+            }
+        }
+    });
 });
