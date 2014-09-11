@@ -119,7 +119,7 @@ class Student extends CI_Controller {
 						$data['details']=$this->studentdb->get_voting_details();
 						$this->load->view('student/election_results_view',$data);
 					}
-					else//if student already voted
+					else//if student did not vote
 					{
 						$this->load->helper(array('form'));
 						$data=$this->studentdb->get_candidates();
@@ -141,12 +141,12 @@ class Student extends CI_Controller {
 	function vote_party()
 	{
 		$this->studentdb->vote_party();
-		redirect('student/sc_voting', 'refresh');
+		echo true;
 	}
 	function vote_individual()
 	{
 		$this->studentdb->vote_individual();
-		redirect('student/sc_voting', 'refresh');
+		echo true;
 	}
 	function check_submission_input()
 	{
